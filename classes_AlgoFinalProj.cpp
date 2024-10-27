@@ -12,9 +12,8 @@ struct edge{
 
 
 class City{
-private:
-    vector<edge> edges = {};
 public:
+    vector<edge> edges = {};
     string name;
     void add_edge(int end, int time){
         edge* New = new edge;
@@ -42,14 +41,59 @@ class map{
             cities[start].add_edge(end, time);
             cities[end].add_edge(start, time);
         }
+
+        int findMin(int finalized[], int times[]){
+            int minIndex;
+            int minTime = INT_MAX;
+            for (int i = 0; i<city_count; i++){
+                if (!finalized[i]&&times[i]<minTime){
+                    minTime = times[i];
+                    minIndex = i;
+                }
+            }
+            return minIndex;
+        }
+        void dijk (int source){
+
+            int finalized[city_count];
+            for (int i = 0; i<city_count; i++){
+                finalized[i]=0;
+            }
+            int times[city_count];
+            for (int i = 0; i<city_count; i++){
+                times[i]=INT_MAX;
+            }
+            times[source] = 0;
+
+            int current;
+            for(int i = 0; i<city_count; i++){
+                current = findMin(finalized,times);
+                finalized[current] = 1;
+
+                for(int x = 0; x<cities[current].edges.size();x++){
+                    if(!finalized[cities[current].edges[x].end]){
+                        times[cities[current].edges[x].end] = min(times[cities[current].edges[x].end], times[current]+cities[current].edges[x].time);
+                    }
+                }
+            }
+
+        for (int i = 0; i < city_count; i++)
+             cout << i << " \t\t\t\t" << times[i] << endl;
+            
+        }
+        
+
 };
 
 
 int main(){
     map USA;
-    USA.add_city("Boston");
-    USA.add_city("Chicago");
+    USA.add_city("Boston"); //0
+    USA.add_city("Chicago"); //1
+    USA.add_city("Portland"); //2
 
-
-
+    USA.add_edge(0,1, 15);
+    USA.add_edge(1,2, 20);
+    USA.dijk(0);
+    
 } 
