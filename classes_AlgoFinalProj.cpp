@@ -10,7 +10,7 @@ struct edge{
     int time;
     int variation = 4;
 
-    void ChangeTime(){
+    void ChangeTraffic(){
         time = Basetime + rand() % variation + 1;
     }
 };
@@ -23,7 +23,7 @@ public:
         edge* New = new edge;
         New->end = end;
         New->Basetime = time;
-        New->ChangeTime();
+        New->ChangeTraffic();
         edges.push_back(*New);
     }
 };
