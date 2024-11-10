@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <map>
 
 using namespace std;
 
@@ -28,23 +29,26 @@ public:
     }
 };
 
-class map{
+class World{
     private:
         vector<City> cities;
+        map<string, int> cities_dictionary;
         int city_count;
     public:
-        map(){
+        World(){
             city_count = 0;
         }
         void add_city(string name){
             City* New = new City;
             New->name = name;
             cities.push_back(*New);
+            cities_dictionary[name] = city_count;
             city_count+=1;
         }
-        void add_edge(int start, int end, int time){
-            cities[start].add_edge(end, time);
-            cities[end].add_edge(start, time);
+
+        void add_edge(string start, string end, int time) {
+            cities[cities_dictionary[start]].add_edge(cities_dictionary[end], time);
+            cities[cities_dictionary[end]].add_edge(cities_dictionary[start], time);
         }
 
         int findMin(int finalized[], int times[]){
@@ -93,19 +97,19 @@ class map{
 
 int main(){
     srand(time(0)); 
-    map USA;
+    World USA;
     USA.add_city("Boston"); //0
     USA.add_city("Chicago"); //1
     USA.add_city("Portland"); //2
     USA.add_city("Keene"); //3
-    USA.add_city("Cambridge");
+    USA.add_city("Cambridge"); //4
 
  
-    USA.add_edge(0,1, 15);
-    USA.add_edge(1,2, 8);
-    USA.add_edge(0,2, 4);
-    USA.add_edge(1,3,10);
-    USA.add_edge(4,2,3);
+    USA.add_edge("Boston", "Chicago", 15);
+    USA.add_edge("Chicago", "Portland", 8);
+    USA.add_edge("Boston", "Portland", 4);
+    USA.add_edge("Chicago", "Keene", 10);
+    USA.add_edge("Cambridge", "Portland", 3);
     USA.dijk(0);
     
 } 
