@@ -5,11 +5,15 @@
 using namespace std;
 
 struct edge{
-    int start;
     int end;
+    int Basetime;
     int time;
-};
+    int variation = 4;
 
+    void ChangeTime(){
+        time = Basetime + rand() % variation + 1;
+    }
+};
 
 class City{
 public:
@@ -18,7 +22,8 @@ public:
     void add_edge(int end, int time){
         edge* New = new edge;
         New->end = end;
-        New->time = time;
+        New->Basetime = time;
+        New->ChangeTime();
         edges.push_back(*New);
     }
 };
@@ -87,13 +92,20 @@ class map{
 
 
 int main(){
+    srand(time(0)); 
     map USA;
     USA.add_city("Boston"); //0
     USA.add_city("Chicago"); //1
     USA.add_city("Portland"); //2
+    USA.add_city("Keene"); //3
+    USA.add_city("Cambridge");
 
+ 
     USA.add_edge(0,1, 15);
-    USA.add_edge(1,2, 20);
+    USA.add_edge(1,2, 8);
+    USA.add_edge(0,2, 4);
+    USA.add_edge(1,3,10);
+    USA.add_edge(4,2,3);
     USA.dijk(0);
     
 } 
