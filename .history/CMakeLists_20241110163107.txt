@@ -1,0 +1,35 @@
+PS C:\Users\4oons\Documents\GitHub\Algorithms_FinalGroupProject\vcpkg> # Minimum CMake version required
+>> cmake_minimum_required(VERSION 3.10)
+>>
+>> # Project name
+>> project(Algorithms_FinalGroupProject)
+>>
+>> # Set the C++ standard
+>> set(CMAKE_CXX_STANDARD 17)
+>> set(CMAKE_CXX_STANDARD_REQUIRED True)
+>>
+>> # Add source files
+>> add_executable(Algorithms_FinalGroupProject
+>>     MinGw_test1.cpp
+>>     classes_AlgoFinalProj.cpp
+>>     classes2_AFP.cpp
+>>     scrapwork_AlgoFinalProj.cpp
+>>     TestGraph.cpp
+>> )
+>>
+>> # Link libraries if needed (example using vcpkg-installed libraries)
+>> # find_package(cpr CONFIG REQUIRED)  # Example for linking cpr if installed via vcpkg
+>> # target_link_libraries(Algorithms_FinalGroupProject PRIVATE cpr::cpr)
+>>
+At line:12 char:44
++ add_executable(Algorithms_FinalGroupProject
++                                            ~
+Missing closing ')' in expression.
+At line:18 char:1
++ )
++ ~
+Unexpected token ')' in expression or statement.
+    + CategoryInfo          : ParserError: (:) [], ParentContainsErrorRecordException
+    + FullyQualifiedErrorId : MissingEndParenthesisInExpression
+
+PS C:\Users\4oons\Documents\GitHub\Algorithms_FinalGroupProject\vcpkg>

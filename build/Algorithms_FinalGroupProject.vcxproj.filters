@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\4oons\Documents\GitHub\Algorithms_FinalGroupProject\classes_AlgoFinalProj.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\4oons\Documents\GitHub\Algorithms_FinalGroupProject\classes2_AFP.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\4oons\Documents\GitHub\Algorithms_FinalGroupProject\scrapwork_AlgoFinalProj.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\4oons\Documents\GitHub\Algorithms_FinalGroupProject\TestGraph.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\4oons\Documents\GitHub\Algorithms_FinalGroupProject\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{769A0987-4D64-3596-97E3-3086B912ABAD}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

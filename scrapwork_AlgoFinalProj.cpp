@@ -1,11 +1,7 @@
-//Scrapwork
-#include<iostream>
-#include<vector>
+#include <boost/version.hpp>
+#include <iostream>
 
-using namespace std;
-
-main()
-{
-
+int main() {
+    std::cout << "Boost version: " << BOOST_LIB_VERSION << std::endl;
     return 0;
 }

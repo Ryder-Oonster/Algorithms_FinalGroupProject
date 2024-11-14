@@ -1,0 +1,10 @@
+^C:\USERS\4OONS\DOCUMENTS\GITHUB\ALGORITHMS_FINALGROUPPROJECT\BUILD\CMAKEFILES\3C45691A1618B27CF58348A0DD201243\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/4oons/Documents/GitHub/Algorithms_FinalGroupProject -BC:/Users/4oons/Documents/GitHub/Algorithms_FinalGroupProject/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/4oons/Documents/GitHub/Algorithms_FinalGroupProject/build/Algorithms_FinalGroupProject.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
