@@ -2,10 +2,10 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "RelWithDebInfo/Algorithms_FinalGroupProject.exe"
+			"path" : "Release/Algorithms_FinalGroupProject.exe"
 		},
 		{
-			"path" : "RelWithDebInfo/Algorithms_FinalGroupProject.pdb"
+			"path" : "Release/Algorithms_FinalGroupProject.pdb"
 		}
 	],
 	"backtrace" : 2,
@@ -18,7 +18,7 @@
 		],
 		"files" : 
 		[
-			"vcpkg/scripts/buildsystems/vcpkg.cmake",
+			"C:/local/vcpkg/scripts/buildsystems/vcpkg.cmake",
 			"CMakeLists.txt"
 		],
 		"nodes" : 
@@ -46,7 +46,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "/DWIN32 /D_WINDOWS /W3 /GR /EHsc /MD /Zi /O2 /Ob1 /DNDEBUG -std:c++17"
+					"fragment" : "/DWIN32 /D_WINDOWS /W3 /GR /EHsc /MD /O2 /Ob2 /DNDEBUG -std:c++17"
 				}
 			],
 			"language" : "CXX",
@@ -79,11 +79,11 @@
 		"commandFragments" : 
 		[
 			{
-				"fragment" : "/DWIN32 /D_WINDOWS /W3 /GR /EHsc /MD /Zi /O2 /Ob1 /DNDEBUG",
+				"fragment" : "/DWIN32 /D_WINDOWS /W3 /GR /EHsc /MD /O2 /Ob2 /DNDEBUG",
 				"role" : "flags"
 			},
 			{
-				"fragment" : "/machine:x64 /debug /INCREMENTAL /subsystem:console",
+				"fragment" : "/machine:x64 /INCREMENTAL:NO /subsystem:console",
 				"role" : "flags"
 			},
 			{

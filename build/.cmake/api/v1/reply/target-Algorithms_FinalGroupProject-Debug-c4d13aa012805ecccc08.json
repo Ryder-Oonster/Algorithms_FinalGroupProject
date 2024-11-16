@@ -18,7 +18,7 @@
 		],
 		"files" : 
 		[
-			"vcpkg/scripts/buildsystems/vcpkg.cmake",
+			"C:/local/vcpkg/scripts/buildsystems/vcpkg.cmake",
 			"CMakeLists.txt"
 		],
 		"nodes" : 

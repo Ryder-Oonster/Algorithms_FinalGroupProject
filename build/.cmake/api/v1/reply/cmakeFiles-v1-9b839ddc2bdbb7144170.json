@@ -9,7 +9,8 @@
 			"path" : "build/CMakeFiles/3.31.0/CMakeSystem.cmake"
 		},
 		{
-			"path" : "vcpkg/scripts/buildsystems/vcpkg.cmake"
+			"isExternal" : true,
+			"path" : "C:/local/vcpkg/scripts/buildsystems/vcpkg.cmake"
 		},
 		{
 			"isCMake" : true,
