@@ -5,7 +5,7 @@
             "includePath": [
                 "${workspaceFolder}/**",
                 "C:/local/boost_1_86_0",
-                "C:/Program Files/OpenSSL-Win64/include",
+                "C:/local/OpenSSL-Win64/include",
                 "C:/local/curl-8.11.0/include",
                 "C:/local/vcpkg/installed/x64-windows/include"
             ],
@@ -24,8 +24,8 @@
                     "${workspaceFolder}/**",
                     "C:/local/vcpkg/installed/x64-windows/include",
                     "C:/local/boost_1_86_0",
-                    "C:/Program Files/OpenSSL-Win64/include",
-                    "C:/local/curl-8.11.0/include"
+                    "C:/local/OpenSSL-Win64/include",
+                    "C:/local/curl-8.11.0/include",
                 ],
                 "limitSymbolsToIncludedHeaders": true
             }
@@ -36,8 +36,8 @@
                 "${workspaceFolder}/**",
                 "C:/local/vcpkg/installed/x64-windows/include",
                 "C:/local/boost_1_81_0",
-                "C:/Program Files/OpenSSL-Win64/include",
-                "C:/local/curl-8.11.0/include"
+                "C:/local/OpenSSL-Win64/include",
+                "C:/local/curl-8.11.0/include",
             ],
             "defines": [
                 "_DEBUG",
@@ -53,8 +53,8 @@
                     "${workspaceFolder}/**",
                     "C:/local/vcpkg/installed/x64-windows/include",
                     "C:/local/boost_1_81_0",
-                    "C:/Program Files/OpenSSL-Win64/include",
-                    "C:/local/curl-8.11.0/include"
+                    "C:/local/OpenSSL-Win64/include",
+                    "C:/local/curl-8.11.0/include",
                 ],
                 "limitSymbolsToIncludedHeaders": true
             }

@@ -11,9 +11,9 @@
                 "${file}",
                 "-o",
                 "${fileDirname}\\${fileBasenameNoExtension}.exe",
-                "-IC:/Program Files/OpenSSL-Win64/include", // Added OpenSSL include path
+                "-IC:/local/OpenSSL-Win64/include", // Added OpenSSL include path
                 "-IC:/local/curl-8.11.0/include",              // Added libcurl include path (change accordingly)
-                "-LC:/Program Files/OpenSSL-Win64/lib",      // Added OpenSSL lib path
+                "-LC:/local/OpenSSL-Win64/lib",      // Added OpenSSL lib path
                 "-LC:/local/curl-8.11.0/lib",                  // Added libcurl lib path (change accordingly)
                 "-lssl",                                     // Link with OpenSSL libssl
                 "-lcrypto",                                  // Link with OpenSSL libcrypto
@@ -38,10 +38,10 @@
                 "/nologo",
                 "/Fe${fileDirname}\\${fileBasenameNoExtension}.exe",
                 "${file}",
-                "/I", "C:\\Program Files\\OpenSSL-Win64\\include",  // Added OpenSSL include path for cl.exe
+                "/I", "C:\\local\\OpenSSL-Win64\\include",  // Added OpenSSL include path for cl.exe
                 "/I", "C:\\path\\to\\libcurl\\include",             // Added libcurl include path (adjust path as needed)
-                "C:\\Program Files\\OpenSSL-Win64\\lib\\libssl.lib", // Link with OpenSSL libssl
-                "C:\\Program Files\\OpenSSL-Win64\\lib\\libcrypto.lib", // Link with OpenSSL libcrypto
+                "C:\\local\\OpenSSL-Win64\\lib\\libssl.lib", // Link with OpenSSL libssl
+                "C:\\local\\OpenSSL-Win64\\lib\\libcrypto.lib", // Link with OpenSSL libcrypto
                 "C:\\path\\to\\libcurl\\lib\\libcurl.lib"          // Link with libcurl (adjust path as needed)
             ],
             "options": {
