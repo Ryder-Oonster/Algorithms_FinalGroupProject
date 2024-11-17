@@ -14,10 +14,10 @@ size_t WriteCallback(void* contents, size_t size, size_t nmemb, std::string* out
 
 int main() {
     // Coordinates for two locations (example coordinates in Massachusetts)
-    std::string startLat = "42.3583";
-    std::string startLon = "-71.0657";
-    std::string endLat = "42.1008";
-    std::string endLon = "-72.5899";
+    std::string startLat = "42.35839068329045";
+    std::string startLon = "-71.06574721537308";
+    std::string endLat = "42.3581";
+    std::string endLon = "-71.0636";
 
     // URL for the OSRM request
     std::string url = "http://localhost:5000/route/v1/driving/" + startLon + "," + startLat + ";" + endLon + "," + endLat + "?steps=true";

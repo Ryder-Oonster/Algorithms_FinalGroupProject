@@ -16,8 +16,8 @@ int main() {
     // Coordinates for two locations (example coordinates in Massachusetts)
     std::string startLat = "42.3583";
     std::string startLon = "-71.0657";
-    std::string endLat = "42.1008";
-    std::string endLon = "-72.5899";
+    std::string endLat = "42.100839621356506";
+    std::string endLon = "-71.0636";
 
     // URL for the OSRM request
     std::string url = "http://localhost:5000/route/v1/driving/" + startLon + "," + startLat + ";" + endLon + "," + endLat + "?steps=true";
