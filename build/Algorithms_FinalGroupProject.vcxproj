@@ -377,6 +377,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="C:\Users\4oons\Documents\GitHub\Algorithms_FinalGroupProject\classes2_AFP.cpp" />
     <ClCompile Include="C:\Users\4oons\Documents\GitHub\Algorithms_FinalGroupProject\scrapwork_AlgoFinalProj.cpp" />
     <ClCompile Include="C:\Users\4oons\Documents\GitHub\Algorithms_FinalGroupProject\TestGraph.cpp" />
+    <ClCompile Include="C:\Users\4oons\Documents\GitHub\Algorithms_FinalGroupProject\test_curl_OSRM.cpp" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

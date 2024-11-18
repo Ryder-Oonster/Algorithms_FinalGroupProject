@@ -1,0 +1,19 @@
+graph DijkstraGraph {
+  0 -- 1 [label="36"];
+  0 -- 1 [label="41"];
+  0 -- 2 [label="5"];
+  1 -- 0 [label="38"];
+  1 -- 0 [label="41"];
+  1 -- 2 [label="29"];
+  1 -- 3 [label="11"];
+  2 -- 1 [label="29"];
+  2 -- 0 [label="5"];
+  2 -- 4 [label="4"];
+  3 -- 1 [label="11"];
+  4 -- 2 [label="4"];
+
+  // Highlight the optimal path
+  0 -- 2 [color=red, penwidth=2.0];
+  2 -- 1 [color=red, penwidth=2.0];
+  1 -- 3 [color=red, penwidth=2.0];
+}

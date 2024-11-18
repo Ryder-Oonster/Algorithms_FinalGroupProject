@@ -12,12 +12,12 @@
                 "-o",
                 "${fileDirname}\\${fileBasenameNoExtension}.exe",
                 "-IC:/local/OpenSSL-Win64/include", // Added OpenSSL include path
-                "-IC:/local/curl-8.11.0/include",              // Added libcurl include path (change accordingly)
-                "-LC:/local/OpenSSL-Win64/lib",      // Added OpenSSL lib path
-                "-LC:/local/curl-8.11.0/lib",                  // Added libcurl lib path (change accordingly)
-                "-lssl",                                     // Link with OpenSSL libssl
-                "-lcrypto",                                  // Link with OpenSSL libcrypto
-                "-lcurl"                                     // Link with libcurl
+                "-IC:/local/curl-8.11.0/include",   // Added libcurl include path (change accordingly)
+                "-LC:/local/OpenSSL-Win64/lib",     // Added OpenSSL lib path
+                "-LC:/local/curl-8.11.0/lib",       // Added libcurl lib path (change accordingly)
+                "-lssl",                            // Link with OpenSSL libssl
+                "-lcrypto",                         // Link with OpenSSL libcrypto
+                "-lcurl"                            // Link with libcurl
             ],
             "options": {
                 "cwd": "C:\\msys64\\ucrt64\\bin"
@@ -38,11 +38,11 @@
                 "/nologo",
                 "/Fe${fileDirname}\\${fileBasenameNoExtension}.exe",
                 "${file}",
-                "/I", "C:\\local\\OpenSSL-Win64\\include",  // Added OpenSSL include path for cl.exe
-                "/I", "C:\\path\\to\\libcurl\\include",             // Added libcurl include path (adjust path as needed)
-                "C:\\local\\OpenSSL-Win64\\lib\\libssl.lib", // Link with OpenSSL libssl
+                "/I", "C:\\local\\OpenSSL-Win64\\include",    // Added OpenSSL include path for cl.exe
+                "/I", "C:\\local\\curl-8.11.0\\include",      // Added libcurl include path (adjust path as needed)
+                "C:\\local\\OpenSSL-Win64\\lib\\libssl.lib",  // Link with OpenSSL libssl
                 "C:\\local\\OpenSSL-Win64\\lib\\libcrypto.lib", // Link with OpenSSL libcrypto
-                "C:\\path\\to\\libcurl\\lib\\libcurl.lib"          // Link with libcurl (adjust path as needed)
+                "C:\\local\\curl-8.11.0\\lib\\libcurl.lib"    // Link with libcurl (adjust path as needed)
             ],
             "options": {
                 "cwd": "${fileDirname}"
@@ -63,6 +63,23 @@
                 "isDefault": true
             },
             "detail": "Opens the Developer Command Prompt for VS"
+        },
+        {
+            "label": "Generate Graph Image",
+            "type": "shell",
+            "command": "dot",
+            "args": [
+                "-Tpng",
+                "graph.dot",
+                "-o",
+                "graph.png"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "problemMatcher": [],
+            "detail": "Generate a graph image using Graphviz"
         }
     ]
 }

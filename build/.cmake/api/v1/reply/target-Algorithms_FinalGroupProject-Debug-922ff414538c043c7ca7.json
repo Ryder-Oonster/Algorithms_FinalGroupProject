@@ -63,7 +63,8 @@
 				0,
 				1,
 				2,
-				3
+				3,
+				4
 			]
 		}
 	],
@@ -109,7 +110,8 @@
 				0,
 				1,
 				2,
-				3
+				3,
+				4
 			]
 		}
 	],
@@ -137,6 +139,12 @@
 			"backtrace" : 2,
 			"compileGroupIndex" : 0,
 			"path" : "TestGraph.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "test_curl_OSRM.cpp",
 			"sourceGroupIndex" : 0
 		}
 	],

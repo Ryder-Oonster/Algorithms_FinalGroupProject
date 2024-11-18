@@ -13,6 +13,9 @@
     <ClCompile Include="C:\Users\4oons\Documents\GitHub\Algorithms_FinalGroupProject\TestGraph.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="C:\Users\4oons\Documents\GitHub\Algorithms_FinalGroupProject\test_curl_OSRM.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="C:\Users\4oons\Documents\GitHub\Algorithms_FinalGroupProject\CMakeLists.txt" />

@@ -6,7 +6,7 @@
 #include <climits> // For INT_MAX
 #include <cstdlib> // For rand()
 #include <ctime>   // For srand()
-#include <fstream>
+#include <fstream> // For .dot graph file generation
 
 using namespace std;
 
@@ -95,14 +95,36 @@ public:
             cout << i << " \t\t\t\t" << times[i] << endl;
         }
         vector<int> path;
-        for (int postition = destination; postition != -1; postition = parent[postition] ) {
-            path.push_back(postition);
+        for (int position = destination; position != -1; position = parent[position]) {
+            path.push_back(position);
         }
         reverse(path.begin(), path.end());
         return path;
     }
 
+    const vector<City>& getCities() const {
+        return cities;
+    }
 
+    void outputGraphToDotFile(const vector<int>& path) {
+        std::ofstream dotFile("graph.dot");
+        dotFile << "graph DijkstraGraph {\n";
+
+        // Define the edges in the graph
+        for (size_t i = 0; i < cities.size(); ++i) {
+            for (const auto& edge : cities[i].edges) {
+                dotFile << "  " << i << " -- " << edge.end << " [label=\"" << edge.time << "\"];\n";
+            }
+        }
+
+        // Highlight the optimal path
+        dotFile << "\n  // Highlight the optimal path\n";
+        for (size_t i = 1; i < path.size(); ++i) {
+            dotFile << "  " << path[i - 1] << " -- " << path[i] << " [color=red, penwidth=2.0];\n";
+        }
+
+        dotFile << "}\n";
+    }
 };
 
 int main() {
@@ -116,16 +138,18 @@ int main() {
 
     USA.add_edge("Boston", "Chicago", 30, 8);
     USA.add_edge("Boston", "Chicago", 40, 1);
-    USA.add_edge("Chicago", "Portland", 28,1);
-    USA.add_edge("Boston", "Portland", 4,1);
-    USA.add_edge("Chicago", "Keene", 10,1);
-    USA.add_edge("Cambridge", "Portland", 3,1);
-    vector<int> record = USA.dijk(0,3);
+    USA.add_edge("Chicago", "Portland", 28, 1);
+    USA.add_edge("Boston", "Portland", 4, 1);
+    USA.add_edge("Chicago", "Keene", 10, 1);
+    USA.add_edge("Cambridge", "Portland", 3, 1);
+    vector<int> record = USA.dijk(0, 3);
 
     for (size_t i = 0; i < record.size(); i++) {
         cout << record[i];
         if (i < record.size() - 1) cout << " -> ";
     }
+
+    USA.outputGraphToDotFile(record);
 
     return 0;
 }

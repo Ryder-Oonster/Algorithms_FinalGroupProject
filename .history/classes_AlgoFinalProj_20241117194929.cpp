@@ -6,7 +6,7 @@
 #include <climits> // For INT_MAX
 #include <cstdlib> // For rand()
 #include <ctime>   // For srand()
-#include <fstream>
+#include <fstream> // For .dot graph file generation
 
 using namespace std;
 
@@ -102,6 +102,27 @@ public:
         return path;
     }
 
+    // Add this function to output the graph as a .dot file
+    void outputGraphToDotFile(const vector<City>& cities, const vector<int>& path) {
+        std::ofstream dotFile("graph.dot");
+        dotFile << "graph DijkstraGraph {\n";
+
+        // Define the edges in the graph
+        for (size_t i = 0; i < cities.size(); ++i) {
+            for (const auto& edge : cities[i].edges) {
+                dotFile << "  " << i << " -- " << edge.end << " [label=\"" << edge.time << "\"];\n";
+            }
+        }
+
+        // Highlight the optimal path
+        dotFile << "\n  // Highlight the optimal path\n";
+        for (size_t i = 1; i < path.size(); ++i) {
+            dotFile << "  " << path[i - 1] << " -- " << path[i] << " [color=red, penwidth=2.0];\n";
+        }
+
+        dotFile << "}\n";
+    }
+
 
 };
 
@@ -126,6 +147,7 @@ int main() {
         cout << record[i];
         if (i < record.size() - 1) cout << " -> ";
     }
+    outputGraphToDotFile(USA.cities, record);
 
     return 0;
 }
