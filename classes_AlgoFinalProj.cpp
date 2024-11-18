@@ -30,7 +30,7 @@ struct edge {
     int time;
     int variation;
     void ChangeTraffic() {
-        time = Basetime + (1+trafficCalc()*variation*1);
+        time = Basetime * (1+trafficCalc()*variation*1);
     }
 };
 
@@ -135,7 +135,7 @@ public:
         // Highlight the optimal path
         dotFile << "\n  // Highlight the optimal path\n";
         for (size_t i = 1; i < path.size(); ++i) {
-            dotFile << "  " << cityNames[path[i - 1]] << " -> " << cityNames[path[i]] << " [color=red, penwidth=2.0];\n";
+            dotFile << "  " << cityNames[path[i - 1]] << " -- " << cityNames[path[i]] << " [color=red, penwidth=3.0];\n";
         }
 
         dotFile << "}\n";
@@ -201,14 +201,14 @@ int main() {
     USA.add_edge("Orange","Springfield",59,1);
     USA.add_edge("Greenfield","Springfield",38,3);
     USA.add_edge("Worcester","Springfield",54,3);
-    vector<int> record = USA.dijk(0,3);
+    vector<int> record = USA.dijk(0,16);
 
     for (size_t i = 0; i < record.size(); i++) {
         cout << record[i];
         if (i < record.size() - 1) cout << " -> ";
     }
 
-    hour = 11;
+    hour = 14;
     cout<<endl<<trafficCalc();
 
     USA.outputGraphToDotFile(record);//Output graph

@@ -7,11 +7,13 @@
     <option name="/Default/RiderDebugger/RiderRestoreDecompile/RestoreDecompileSetting/@EntryValue" value="false" type="bool" />
     <option name="/Default/Housekeeping/GlobalSettingsUpgraded/IsUpgraded/@EntryValue" value="true" type="bool" />
     <option name="/Default/Housekeeping/FeatureSuggestion/FeatureSuggestionManager/DisabledSuggesters/=SwitchToGoToActionSuggester/@EntryIndexedValue" value="true" type="bool" />
-    <option name="/Default/Housekeeping/FeatureSuggestion/FeatureSuggestionManager/DisabledSuggesters/=SwitchToGoToActionSuggester/@EntryIndexRemoved" />
   </component>
   <component name="CMakePresetLoader">{
   &quot;useNewFormat&quot;: true
 }</component>
+  <component name="CMakeProjectFlavorService">
+    <option name="flavorId" value="CMakePlainProjectFlavor" />
+  </component>
   <component name="CMakeReloadState">
     <option name="reloaded" value="true" />
   </component>
@@ -28,8 +30,10 @@
   <component name="ChangeListManager">
     <list default="true" id="c55b4274-11dd-4853-8651-8289832292d6" name="Changes" comment="Added Dictionary">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes3_AFP.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/classes3_AFP.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/classes_AlgoFinalProj.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/classes_AlgoFinalProj.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/classes_AlgoFinalProj.exe" beforeDir="false" afterPath="$PROJECT_DIR$/classes_AlgoFinalProj.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/graph.dot" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,6 +77,7 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;C/C++ File.classes3_AFP.cpp.executor&quot;: &quot;Run&quot;,
     &quot;C/C++ File.classes_AlgoFinalProj.cpp.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.RadMigrateCodeStyle&quot;: &quot;true&quot;,
@@ -97,9 +102,27 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+    <configuration name="Algorithms_FinalGroupProject" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Algorithms_FinalGroupProject" TARGET_NAME="Algorithms_FinalGroupProject" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Algorithms_FinalGroupProject" RUN_TARGET_NAME="Algorithms_FinalGroupProject">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="classes3_AFP.cpp" type="CppFileRunConfiguration" factoryName="CppFileRunConfiguration" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Algorithms_FinalGroupProject" TARGET_NAME="classes3_AFP.cpp" CONFIG_NAME="classes3_AFP.cpp">
+      <option name="sourceFile" value="classes3_AFP.cpp" />
+      <method v="2">
+        <option name="com.jetbrains.cidr.cpp.runfile.CppFileBuildBeforeRunTaskProvider$BasicBuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="classes3_AFP.cpp" type="CppFileRunConfiguration" factoryName="CppFileRunConfiguration" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Algorithms_FinalGroupProject" TARGET_NAME="classes3_AFP.cpp" CONFIG_NAME="classes3_AFP.cpp">
+      <option name="sourceFile" value="classes3_AFP.cpp" />
+      <method v="2">
+        <option name="com.jetbrains.cidr.cpp.runfile.CppFileBuildBeforeRunTaskProvider$BasicBuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="classes_AlgoFinalProj.cpp" type="CppFileRunConfiguration" factoryName="CppFileRunConfiguration" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Algorithms_FinalGroupProject" TARGET_NAME="classes_AlgoFinalProj.cpp" CONFIG_NAME="classes_AlgoFinalProj.cpp">
+      <option name="sourceFile" value="classes_AlgoFinalProj.cpp" />
+      <method v="2">
+        <option name="com.jetbrains.cidr.cpp.runfile.CppFileBuildBeforeRunTaskProvider$BasicBuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
     <configuration name="classes_AlgoFinalProj.cpp" type="CppFileRunConfiguration" factoryName="CppFileRunConfiguration" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Algorithms_FinalGroupProject" TARGET_NAME="classes_AlgoFinalProj.cpp" CONFIG_NAME="classes_AlgoFinalProj.cpp">
@@ -109,6 +132,7 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="C/C++ File.classes3_AFP.cpp" />
       <item itemvalue="C/C++ File.classes_AlgoFinalProj.cpp" />
       <item itemvalue="CMake Application.Algorithms_FinalGroupProject" />
     </list>
@@ -130,6 +154,10 @@
       <workItem from="1731883144055" duration="3689000" />
       <workItem from="1731892650393" duration="407000" />
       <workItem from="1731893437825" duration="710000" />
+      <workItem from="1731894399585" duration="464000" />
+      <workItem from="1731895145661" duration="1753000" />
+      <workItem from="1731896928453" duration="439000" />
+      <workItem from="1731897466202" duration="983000" />
     </task>
     <task id="LOCAL-00001" summary="Added Dictionary">
       <option name="closed" value="true" />

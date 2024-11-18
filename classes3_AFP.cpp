@@ -118,7 +118,7 @@ public:
 
 
     void outputGraphToDotFile(const vector<int>& path) {
-        std::ofstream dotFile("graph.dot");
+        ofstream dotFile("graph.dot");
         dotFile << "graph DijkstraGraph {\n"; // Use 'graph' to define an undirected graph
 
         // Define the edges in the graph (undirected)
