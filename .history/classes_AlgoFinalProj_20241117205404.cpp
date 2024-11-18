@@ -117,7 +117,9 @@ public:
     }
 
 
-    void outputGraphToDotFile(const vector<int>& path) {
+};
+
+void outputGraphToDotFile(const vector<int>& path) {
         std::ofstream dotFile("graph.dot");
         dotFile << "graph DijkstraGraph {\n";
 
@@ -136,11 +138,7 @@ public:
 
         dotFile << "}\n";
     }
-
-
 };
-
-
 
 int main() {
     srand(static_cast<unsigned int>(time(0)));
@@ -206,9 +204,5 @@ int main() {
 
     hour = 11;
     cout<<endl<<trafficCalc();
-
-    USA.outputGraphToDotFile(record);//Output graph
-
-
     return 0;
 }

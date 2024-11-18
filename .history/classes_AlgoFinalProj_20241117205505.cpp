@@ -207,7 +207,7 @@ int main() {
     hour = 11;
     cout<<endl<<trafficCalc();
 
-    USA.outputGraphToDotFile(record);//Output graph
+    //Outpup graph
 
 
     return 0;

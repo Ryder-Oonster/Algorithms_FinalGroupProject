@@ -5,24 +5,10 @@
 #include <map>
 #include <climits> // For INT_MAX
 #include <cstdlib> // For rand()
-#include <ctime>   // For srand()
-#include <math.h>
-#include <fstream> // For .dot graph file generation
+#include <ctime>   // For srand()#include <fstream> // For .dot graph file generation
+
 
 using namespace std;
-double hour;
-double trafficCalc() {
-    if (hour >=5.5 && hour <=10.5) {
-     return (0.277778*(pow(hour, 3))-10.2976*(pow(hour,2))+108.948*hour-325.238);
-    }
-    else if (hour >= 12.5 && hour <=20.5) {
-        return 0.353535*(pow(hour,3))-23.5119*(pow(hour,2))+482.682*hour-3045.95;
-    }
-    else {
-        return 0;
-    }
-}
-
 
 struct edge {
     int end;
@@ -30,7 +16,7 @@ struct edge {
     int time;
     int variation;
     void ChangeTraffic() {
-        time = Basetime + (1+trafficCalc()*variation*1);
+        time = Basetime + (rand() % variation) + 1;
     }
 };
 
@@ -109,13 +95,16 @@ public:
             cout << i << " \t\t\t\t" << times[i] << endl;
         }
         vector<int> path;
-        for (int postition = destination; postition != -1; postition = parent[postition] ) {
-            path.push_back(postition);
+        for (int position = destination; position != -1; position = parent[position]) {
+            path.push_back(position);
         }
         reverse(path.begin(), path.end());
         return path;
     }
 
+    const vector<City>& getCities() const {
+        return cities;
+    }
 
     void outputGraphToDotFile(const vector<int>& path) {
         std::ofstream dotFile("graph.dot");
@@ -136,79 +125,31 @@ public:
 
         dotFile << "}\n";
     }
-
-
 };
-
-
 
 int main() {
     srand(static_cast<unsigned int>(time(0)));
     World USA;
-    USA.add_city("Boston");
-    USA.add_city("Salem");
-    USA.add_city("Burlington");
-    USA.add_city("Newton");
-    USA.add_city("Norwood");
-    USA.add_city("Quincy");
-    USA.add_city("Lawrence");
-    USA.add_city("Lowell");
-    USA.add_city("Marlborough");
-    USA.add_city("Mansfield");
-    USA.add_city("Plymouth");
-    USA.add_city("Littleton");
-    USA.add_city("Leominster");
-    USA.add_city("Worcester");
-    USA.add_city("Providence");
-    USA.add_city("Orange");
-    USA.add_city("Greenfield");
-    USA.add_city("Springfield");
+    USA.add_city("Boston");   // 0
+    USA.add_city("Chicago");  // 1
+    USA.add_city("Portland"); // 2
+    USA.add_city("Keene");    // 3
+    USA.add_city("Cambridge");// 4
 
-
-    USA.add_edge("Boston","Salem",32, 5);
-    USA.add_edge("Boston","Burlington",20, 5);
-    USA.add_edge("Salem","Burlington",25, 4);
-    USA.add_edge("Boston","Newton",19, 5);
-    USA.add_edge("Burlington","Newton",22, 4);
-    USA.add_edge("Boston","Norwood",29, 5);
-    USA.add_edge("Newton","Norwood",20, 4);
-    USA.add_edge("Boston","Quincy",20, 5);
-    USA.add_edge("Norwood","Quincy",20, 4);
-    USA.add_edge("Salem","Lawrence",40, 3);
-    USA.add_edge("Burlington","Lawrence",24, 4);
-    USA.add_edge("Lawrence","Lowell",19, 3);
-    USA.add_edge("Burlington","Lowell",17, 4);
-    USA.add_edge("Newton","Marlborough",30,4);
-    USA.add_edge("Lowell","Marlborough",30,3);
-    USA.add_edge("Norwood","Mansfield",18,4);
-    USA.add_edge("Marlborough","Mansfield",36,3);
-    USA.add_edge("Quincy","Plymouth",32,3);
-    USA.add_edge("Mansfield","Plymouth",42,3);
-    USA.add_edge("Lowell","Littleton",17,3);
-    USA.add_edge("Marlborough","Littleton",20,3);
-    USA.add_edge("Littleton","Leominster",19,3);
-    USA.add_edge("Leominster","Worcester",26,2);
-    USA.add_edge("Marlborough","Worcester",22,3);
-    USA.add_edge("Worcester","Providence",45,3);
-    USA.add_edge("Mansfield","Providence",27,4);
-    USA.add_edge("Plymouth","Providence",57,3);
-    USA.add_edge("Leominster","Orange",37,2);
-    USA.add_edge("Orange","Greenfield",26,2);
-    USA.add_edge("Orange","Springfield",59,1);
-    USA.add_edge("Greenfield","Springfield",38,3);
-    USA.add_edge("Worcester","Springfield",54,3);
-    vector<int> record = USA.dijk(0,3);
+    USA.add_edge("Boston", "Chicago", 30, 8);
+    USA.add_edge("Boston", "Chicago", 40, 1);
+    USA.add_edge("Chicago", "Portland", 28, 1);
+    USA.add_edge("Boston", "Portland", 4, 1);
+    USA.add_edge("Chicago", "Keene", 10, 1);
+    USA.add_edge("Cambridge", "Portland", 3, 1);
+    vector<int> record = USA.dijk(0, 3);
 
     for (size_t i = 0; i < record.size(); i++) {
         cout << record[i];
         if (i < record.size() - 1) cout << " -> ";
     }
 
-    hour = 11;
-    cout<<endl<<trafficCalc();
-
-    USA.outputGraphToDotFile(record);//Output graph
-
+    USA.outputGraphToDotFile(record);
 
     return 0;
 }
