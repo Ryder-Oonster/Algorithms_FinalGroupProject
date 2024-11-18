@@ -94,17 +94,60 @@ public:
 int main() {
     srand(static_cast<unsigned int>(time(0)));
     World USA;
-    USA.add_city("Boston");   // 0
-    USA.add_city("Chicago");  // 1
-    USA.add_city("Portland"); // 2
-    USA.add_city("Keene");    // 3
-    USA.add_city("Cambridge");// 4
 
-    USA.add_edge("Boston", "Chicago", 15);
-    USA.add_edge("Chicago", "Portland", 8);
-    USA.add_edge("Boston", "Portland", 4);
-    USA.add_edge("Chicago", "Keene", 10);
-    USA.add_edge("Cambridge", "Portland", 3);
+    USA.add_city("Boston");
+    USA.add_city("Salem");
+    USA.add_city("Burlington");
+    USA.add_city("Newton");
+    USA.add_city("Norwood");
+    USA.add_city("Quincy");
+    USA.add_city("Lawrence");
+    USA.add_city("Lowell");
+    USA.add_city("Marlborough");
+    USA.add_city("Mansfield");
+    USA.add_city("Plymouth");
+    USA.add_city("Littleton");
+    USA.add_city("Leominster");
+    USA.add_city("Worcester");
+    USA.add_city("Providence");
+    USA.add_city("Orange");
+    USA.add_city("Greenfield");
+    USA.add_city("Springfield");
+
+
+    USA.add_edge("Boston","Salem",5);
+    USA.add_edge("Boston","Burlington",5);
+    USA.add_edge("Salem","Burlington",4);
+    USA.add_edge("Boston","Newton",5);
+    USA.add_edge("Burlington","Newton",4);
+    USA.add_edge("Boston","Norwood",5);
+    USA.add_edge("Newton","Norwood",4);
+    USA.add_edge("Boston","Quincy",5);
+    USA.add_edge("Norwood","Quincy",4);
+    USA.add_edge("Salem","Lawrence",3);
+    USA.add_edge("Burlington","Lawrence",4);
+    USA.add_edge("Lawrence","Lowell",3);
+    USA.add_edge("Burlington","Lowell",4);
+    USA.add_edge("Newton","Marlborough",4);
+    USA.add_edge("Lowell","Marlborough",3);
+    USA.add_edge("Norwood","Mansfield",4);
+    USA.add_edge("Marlborough","Mansfield",3);
+    USA.add_edge("Quincy","Plymouth",3);
+    USA.add_edge("Mansfield","Plymouth",3);
+    USA.add_edge("Lowell","Littleton",3);
+    USA.add_edge("Marlborough","Littleton",3);
+    USA.add_edge("Littleton","Leominster",3);
+    USA.add_edge("Leominster","Worcester",2);
+    USA.add_edge("Marlborough","Worcester",3);
+    USA.add_edge("Worcester","Providence",3);
+    USA.add_edge("Mansfield","Providence",4);
+    USA.add_edge("Plymouth","Providence",3);
+    USA.add_edge("Leominster","Orange",2);
+    USA.add_edge("Orange","Greenfield",2);
+    USA.add_edge("Orange","Springfield",1);
+    USA.add_edge("Greenfield","Springfield",3);
+    USA.add_edge("Worcester","Springfield",3);
+
     USA.dijk(0);
 
     return 0;
