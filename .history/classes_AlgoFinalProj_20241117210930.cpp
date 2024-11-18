@@ -53,7 +53,6 @@ private:
     vector<City> cities;
     map<string, int> cities_dictionary;
     int city_count;
-    vector<string> cityNames;
 
 public:
     World() {
@@ -64,7 +63,6 @@ public:
         City New;
         New.name = name;
         cities.push_back(New);
-        cityNames.push_back(name);
         cities_dictionary[name] = city_count;
         city_count += 1;
     }
@@ -120,22 +118,20 @@ public:
 
 
     void outputGraphToDotFile(const vector<int>& path) {
-        ofstream dotFile("graph.dot");
+        std::ofstream dotFile("graph.dot");
         dotFile << "graph DijkstraGraph {\n";
 
         // Define the edges in the graph
         for (size_t i = 0; i < cities.size(); ++i) {
             for (const auto& edge : cities[i].edges) {
-                if(edge.end > i) {
-                    dotFile << "  " << cityNames[i] << " -- " << cityNames[edge.end] << " [label=\"" << edge.time << "\"];\n";
-                }
-                }
+                dotFile << "  " << i << " -- " << edge.end << " [label=\"" << edge.time << "\"];\n";
+            }
         }
 
         // Highlight the optimal path
         dotFile << "\n  // Highlight the optimal path\n";
         for (size_t i = 1; i < path.size(); ++i) {
-            dotFile << "  " << cityNames[path[i - 1]] << " -> " << cityNames[path[i]] << " [color=red, penwidth=2.0];\n";
+            dotFile << "  " << path[i - 1] << " -- " << path[i] << " [color=red, penwidth=2.0];\n";
         }
 
         dotFile << "}\n";
@@ -174,9 +170,9 @@ int main() {
     USA.add_edge("Salem","Burlington",30, 4);
     USA.add_edge("Boston","Newton",17, 5);
     USA.add_edge("Burlington","Newton",26, 4);
-    USA.add_edge("Boston","Norwood",30, 5);
-    USA.add_edge("Newton","Norwood",23, 4);
-    USA.add_edge("Boston","Quincy",15, 5);
+    USA.add_edge("Boston","Norwood",29, 5);
+    USA.add_edge("Newton","Norwood",20, 4);
+    USA.add_edge("Boston","Quincy",20, 5);
     USA.add_edge("Norwood","Quincy",20, 4);
     USA.add_edge("Salem","Lawrence",40, 3);
     USA.add_edge("Burlington","Lawrence",24, 4);
