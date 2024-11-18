@@ -6,8 +6,22 @@
 #include <climits> // For INT_MAX
 #include <cstdlib> // For rand()
 #include <ctime>   // For srand()
+#include <math.h>
 
 using namespace std;
+double hour;
+double trafficCalc() {
+    if (hour >=5.5 && hour <=10.5) {
+     return (0.277778*(pow(hour, 3))-10.2976*(pow(hour,2))+108.948*hour-325.238);
+    }
+    else if (hour >= 12.5 && hour <=20.5) {
+        return 0.353535*(pow(hour,3))-23.5119*(pow(hour,2))+482.682*hour-3045.95;
+    }
+    else {
+        return 0;
+    }
+}
+
 
 struct edge {
     int end;
@@ -125,6 +139,7 @@ int main() {
         cout << record[i];
         if (i < record.size() - 1) cout << " -> ";
     }
-
+    hour = 11;
+    cout<<endl<<trafficCalc();
     return 0;
 }
