@@ -118,28 +118,28 @@ public:
 
 
     void outputGraphToDotFile(const vector<int>& path) {
-        std::ofstream dotFile("graph.dot");
-        dotFile << "graph DijkstraGraph {\n"; // Use 'graph' to define an undirected graph
+    std::ofstream dotFile("graph.dot");
+    dotFile << "graph DijkstraGraph {\n"; // Use 'graph' to define an undirected graph
 
-        // Define the edges in the graph (undirected)
-        for (size_t i = 0; i < cities.size(); ++i) {
-            for (const auto& edge : cities[i].edges) {
-                if (i < edge.end) { // Avoid duplicate undirected edges
-                    dotFile << "  " << i << " -- " << edge.end << " [label=\"" << edge.time << "\"];\n";
-                }
+    // Define the edges in the graph (undirected)
+    for (size_t i = 0; i < cities.size(); ++i) {
+        for (const auto& edge : cities[i].edges) {
+            if (i < edge.end) { // Avoid duplicate undirected edges
+                dotFile << "  " << i << " -- " << edge.end << " [label=\"" << edge.time << "\"];\n";
             }
         }
+    }
 
-        dotFile << "}\n\n";
+    dotFile << "}\n\n";
 
-        dotFile << "digraph OptimalPath {\n"; // Separate section for directed red path
+    dotFile << "digraph OptimalPath {\n"; // Separate section for directed red path
 
-        // Highlight the optimal path (directed)
-        for (size_t i = 1; i < path.size(); ++i) {
-            dotFile << "  " << path[i - 1] << " -> " << path[i] << " [color=red, penwidth=2.0];\n";
-        }
+    // Highlight the optimal path (directed)
+    for (size_t i = 1; i < path.size(); ++i) {
+        dotFile << "  " << path[i - 1] << " -> " << path[i] << " [color=red, penwidth=2.0];\n";
+    }
 
-        dotFile << "}\n";
+    dotFile << "}\n";
 }
 
 
