@@ -118,25 +118,24 @@ public:
 
 
     void outputGraphToDotFile(const vector<int>& path) {
-    std::ofstream dotFile("graph.dot");
-    dotFile << "digraph DijkstraGraph {\n"; // Change 'graph' to 'digraph' for directed graph
+        std::ofstream dotFile("graph.dot");
+        dotFile << "graph DijkstraGraph {\n";
 
-    // Define the edges in the graph
-    for (size_t i = 0; i < cities.size(); ++i) {
-        for (const auto& edge : cities[i].edges) {
-            dotFile << "  " << i << " -> " << edge.end << " [label=\"" << edge.time << "\"];\n"; // Change '--' to '->' for directed edges
+        // Define the edges in the graph
+        for (size_t i = 0; i < cities.size(); ++i) {
+            for (const auto& edge : cities[i].edges) {
+                dotFile << "  " << i << " -- " << edge.end << " [label=\"" << edge.time << "\"];\n";
+            }
         }
+
+        // Highlight the optimal path
+        dotFile << "\n  // Highlight the optimal path\n";
+        for (size_t i = 1; i < path.size(); ++i) {
+            dotFile << "  " << path[i - 1] << " -- " << path[i] << " [color=red, penwidth=2.0];\n";
+        }
+
+        dotFile << "}\n";
     }
-
-    // Highlight the optimal path
-    dotFile << "\n  // Highlight the optimal path\n";
-    for (size_t i = 1; i < path.size(); ++i) {
-        dotFile << "  " << path[i - 1] << " -> " << path[i] << " [color=red, penwidth=2.0];\n"; // Use '->' for directed path
-    }
-
-    dotFile << "}\n";
-}
-
 
 
 };
@@ -172,8 +171,8 @@ int main() {
     USA.add_edge("Boston","Newton",17, 5);
     USA.add_edge("Burlington","Newton",26, 4);
     USA.add_edge("Boston","Norwood",30, 5);
-    USA.add_edge("Newton","Norwood",23, 4);
-    USA.add_edge("Boston","Quincy",15, 5);
+    USA.add_edge("Newton","Norwood",20, 4);
+    USA.add_edge("Boston","Quincy",20, 5);
     USA.add_edge("Norwood","Quincy",20, 4);
     USA.add_edge("Salem","Lawrence",40, 3);
     USA.add_edge("Burlington","Lawrence",24, 4);
