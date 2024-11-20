@@ -8,6 +8,7 @@
 #include <ctime>   // For srand()
 #include <math.h>
 #include <fstream> // For .dot graph file generation
+#include <iomanip>
 
 using namespace std;
 double hour;
@@ -30,7 +31,8 @@ struct edge {
     int time;
     int variation;
     void ChangeTraffic() {
-        time = Basetime * (1+trafficCalc()*variation*1);
+        time = Basetime * (1+trafficCalc()*variation*.002);
+        //cout<<Basetime<<"    "<<time<<endl;
     }
 };
 
@@ -53,9 +55,9 @@ private:
     vector<City> cities;
     map<string, int> cities_dictionary;
     int city_count;
-    vector<string> cityNames;
 
 public:
+    vector<string> cityNames;
     World() {
         city_count = 0;
     }
@@ -86,7 +88,10 @@ public:
         return minIndex;
     }
 
-    vector<int> dijk(int source, int destination) {
+    vector<int> dijk(string sourceS, string destinationS) {
+        int source = cities_dictionary[sourceS];
+        int destination = cities_dictionary[destinationS];
+
         vector<int> finalized(city_count, 0);
         vector<int> times(city_count, INT_MAX);
         vector<int> parent(city_count, -1);
@@ -108,7 +113,7 @@ public:
         }
 
         for (int i = 0; i < city_count; i++) {
-            cout << i << " \t\t\t\t" << times[i] << endl;
+            cout << left << setw(20) << cityNames[i] << setw(10) << times[i] << endl;
         }
         vector<int> path;
         for (int postition = destination; postition != -1; postition = parent[postition] ) {
@@ -141,12 +146,22 @@ public:
         dotFile << "}\n";
     }
 
+    void updateTraffic() {
+
+        for (size_t i = 0; i < cities.size(); ++i) {
+            for (size_t x = 0; x < cities[i].edges.size(); ++x) {
+                //cout<<"City"<<i<<endl;
+                cities[i].edges[x].ChangeTraffic();
+            }
+        }
+    }
 
 };
 
 
 
 int main() {
+    hour = 18;
     srand(static_cast<unsigned int>(time(0)));
     World USA;
     USA.add_city("Boston");
@@ -201,18 +216,32 @@ int main() {
     USA.add_edge("Orange","Springfield",59,1);
     USA.add_edge("Greenfield","Springfield",38,3);
     USA.add_edge("Worcester","Springfield",54,3);
-    vector<int> record = USA.dijk(0,16);
+
+    string source, destination;
+        cout<<"This program allows you to calculate the time, and best route to take between cities"<<endl;
+        cout<<"Below is a list of cities that are included in this program:"<<endl;
+        cout<<"Boston      Salem      Burlington    Newton     Norwood      Quincy"<<endl;
+        cout<<"Lawrence    Lowell     Marlborough   Mansfield  Plymouth     Littleton"<<endl;
+        cout<<"Leominster  Worcester  Providence    Orange     Greenfield   Springfield"<<endl;
+
+        cout<<"Please enter the city that you are currently at: ";
+        cin>>source;
+        cout<<"Please enter the city that is your destination: ";
+        cin>>destination;
+        cout<<"Please Enter an Integer (0-24) Representing Time of Travel: ";
+        cin>>hour;
+        USA.updateTraffic();
+    vector<int> record = USA.dijk(source,destination);
 
     for (size_t i = 0; i < record.size(); i++) {
-        cout << record[i];
+        cout << USA.cityNames[record[i]];
         if (i < record.size() - 1) cout << " -> ";
     }
 
-    hour = 14;
-    cout<<endl<<trafficCalc();
 
     USA.outputGraphToDotFile(record);//Output graph
 
 
     return 0;
+
 }
