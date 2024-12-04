@@ -229,6 +229,37 @@ int main() {
     USA.add_edge("Worcester","Springfield",54,3);
 
 
+    //Test Case 1: Same source and destination
+    /*vector<int> record = USA.dijk("Worcester","Worcester");
+    if (record.size() != 1) {
+        for (size_t i = 0; i < record.size(); i++) {
+            cout << USA.cityNames[record[i]];
+            if (i < record.size() - 1) cout << " -> ";
+        }
+    }
+    else {
+        cout<<"The source and destination cities are the same so a travel time can't be calculated\n";
+    }
+    */
+
+    //Test Case 2: With Zero traffic we would expect time from Boston to Salem to be 26
+    /*
+    hour = 0;
+    vector<int> record = USA.dijk("Boston","Salem");
+    if (record.size() != 1) {
+    for (size_t i = 0; i < record.size(); i++) {
+    cout << USA.cityNames[record[i]];
+    if (i < record.size() - 1) cout << " -> ";
+    }
+    }
+    else {
+    cout<<"The source and destination cities are the same so a travel time can't be calculated\n";
+    }
+    */
+
+
+
+
     //List all available cities in the world and prompts user for inputs
     string source, destination;
         cout<<"This program allows you to calculate the time, and best route to take between cities"<<endl;
@@ -247,13 +278,19 @@ int main() {
     vector<int> record = USA.dijk(source,destination);
 
     //Output optimal path
-    for (size_t i = 0; i < record.size(); i++) {
-        cout << USA.cityNames[record[i]];
-        if (i < record.size() - 1) cout << " -> ";
+    if (record.size() != 1) {
+        for (size_t i = 0; i < record.size(); i++) {
+            cout << USA.cityNames[record[i]];
+            if (i < record.size() - 1) cout << " -> ";
+        }
+    }
+    else {
+        cout<<"The source and destination cities are the same so a travel time can't be calculated\n";
     }
 
     //Convert graph into a dot file that can be turned into a visualization
-    USA.outputGraphToDotFile(record);//Output graph
+    USA.outputGraphToDotFile(record);
+
 
 
     return 0;
