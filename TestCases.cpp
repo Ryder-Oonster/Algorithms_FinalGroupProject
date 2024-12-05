@@ -192,7 +192,6 @@ int main() {
     Test.add_city("City1");
     Test.add_city("City2");
     Test.add_city("City3");
-    Test.add_city("City5");
 
     Test.add_edge("City1", "City2", 10, 2);
 
@@ -218,6 +217,8 @@ int main() {
 
     //Test Case 3: Testing Dykstra's with two different simple paths
     Test.add_city("City4");
+    Test.add_city("City5");
+
     Test.add_edge("City1", "City3", 10, 5);
     Test.add_edge("City2", "City5", 20, 1);
     Test.add_edge("City3", "City4", 10, 5);
