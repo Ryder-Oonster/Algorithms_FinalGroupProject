@@ -180,98 +180,84 @@ public:
         }
     }
 
+
 };
 
 
-
+//This main is used purely for testing classes and methods
 int main() {
-    hour = 18;
-    srand(static_cast<unsigned int>(time(0)));
-    //Create a world
-    World USA;
-    //Add all cities to world
-    USA.add_city("Boston");
-    USA.add_city("Salem");
-    USA.add_city("Burlington");
-    USA.add_city("Newton");
-    USA.add_city("Norwood");
-    USA.add_city("Quincy");
-    USA.add_city("Lawrence");
-    USA.add_city("Lowell");
-    USA.add_city("Marlborough");
-    USA.add_city("Mansfield");
-    USA.add_city("Plymouth");
-    USA.add_city("Littleton");
-    USA.add_city("Leominster");
-    USA.add_city("Worcester");
-    USA.add_city("Providence");
-    USA.add_city("Orange");
-    USA.add_city("Greenfield");
-    USA.add_city("Springfield");
-    //Add roads/edges between cities
-    USA.add_edge("Boston","Salem",26, 5);
-    USA.add_edge("Boston","Burlington",24, 5);
-    USA.add_edge("Salem","Burlington",30, 4);
-    USA.add_edge("Boston","Newton",17, 5);
-    USA.add_edge("Burlington","Newton",26, 4);
-    USA.add_edge("Boston","Norwood",30, 5);
-    USA.add_edge("Newton","Norwood",23, 4);
-    USA.add_edge("Boston","Quincy",15, 5);
-    USA.add_edge("Norwood","Quincy",20, 4);
-    USA.add_edge("Salem","Lawrence",40, 3);
-    USA.add_edge("Burlington","Lawrence",24, 4);
-    USA.add_edge("Lawrence","Lowell",19, 3);
-    USA.add_edge("Burlington","Lowell",17, 4);
-    USA.add_edge("Newton","Marlborough",30,4);
-    USA.add_edge("Lowell","Marlborough",30,3);
-    USA.add_edge("Norwood","Mansfield",18,4);
-    USA.add_edge("Marlborough","Mansfield",36,3);
-    USA.add_edge("Quincy","Plymouth",32,3);
-    USA.add_edge("Mansfield","Plymouth",42,3);
-    USA.add_edge("Lowell","Littleton",17,3);
-    USA.add_edge("Marlborough","Littleton",20,3);
-    USA.add_edge("Littleton","Leominster",19,3);
-    USA.add_edge("Leominster","Worcester",26,2);
-    USA.add_edge("Marlborough","Worcester",22,3);
-    USA.add_edge("Worcester","Providence",45,3);
-    USA.add_edge("Mansfield","Providence",27,4);
-    USA.add_edge("Plymouth","Providence",57,3);
-    USA.add_edge("Leominster","Orange",37,2);
-    USA.add_edge("Orange","Greenfield",26,2);
-    USA.add_edge("Orange","Springfield",59,1);
-    USA.add_edge("Greenfield","Springfield",38,3);
-    USA.add_edge("Worcester","Springfield",54,3);
+    hour = 0;
+    //Initialize world for testing
+    World Test;
+    Test.add_city("City1");
+    Test.add_city("City2");
+    Test.add_city("City3");
+    Test.add_city("City5");
 
-    //List all available cities in the world and prompts user for inputs
-    string source, destination;
-        cout<<"This program allows you to calculate the time, and best route to take between cities"<<endl;
-        cout<<"Below is a list of cities that are included in this program:"<<endl;
-        cout<<"Boston      Salem      Burlington    Newton     Norwood      Quincy"<<endl;
-        cout<<"Lawrence    Lowell     Marlborough   Mansfield  Plymouth     Littleton"<<endl;
-        cout<<"Leominster  Worcester  Providence    Orange     Greenfield   Springfield"<<endl;
+    Test.add_edge("City1", "City2", 10, 2);
 
-        cout<<"Please enter the city that you are currently at (Exactly As Seen Above): ";
-        cin>>source;
-        cout<<"Please enter the city that is your destination (Exactly As Seen Above): ";
-        cin>>destination;
-        cout<<"Please Enter an Integer (0-24) Representing Time of Travel: ";
-        cin>>hour;
-        USA.updateTraffic();
-    vector<int> record = USA.dijk(source,destination);
 
-    //Output optimal path
-    if (record.size() != 1) {
-        for (size_t i = 0; i < record.size(); i++) {
-            cout << USA.cityNames[record[i]];
-            if (i < record.size() - 1) cout << " -> ";
+    //Test Case 1: Test Dijkstras if there is no path from start to end
+    cout<<"Test Case 1:\n";
+    vector<int> path = Test.dijk("City1", "City3");
+    if (path.size() != 1) {
+        for (size_t i = 0; i < path.size(); i++) {
+            cout << Test.cityNames[path[i]];
+            if (i < path.size() - 1) cout << " -> ";
+        }
+    }
+    //Test Case 2: Test Dijkstra's Algorithm with source and destination of at the same location
+    cout<<"Test Case 2:\n";
+    path = Test.dijk("City1", "City1");
+    if (path.size() != 1) {
+        for (size_t i = 0; i < path.size(); i++) {
+            cout << Test.cityNames[path[i]];
+            if (i < path.size() - 1) cout << " -> ";
         }
     }
 
-    //Convert graph into a dot file that can be turned into a visualization
-    USA.outputGraphToDotFile(record);
+    //Test Case 3: Testing Dykstra's with two different simple paths
+    Test.add_city("City4");
+    Test.add_edge("City1", "City3", 10, 5);
+    Test.add_edge("City2", "City5", 20, 1);
+    Test.add_edge("City3", "City4", 10, 5);
+    Test.add_edge("City4", "City5", 5, 4);
+
+    cout<<"Test Case 3 - We expect to see the route from City 1 to City 3 to City 4 to City 5, with a time of 25:\n";
+    path = Test.dijk("City1", "City5");
+    if (path.size() != 1) {
+        for (size_t i = 0; i < path.size(); i++) {
+            cout << Test.cityNames[path[i]];
+            if (i < path.size() - 1) cout << " -> ";
+        }
+    }
+    cout<<endl;
+
+
+    //Test Case 4 - Testing traffic multiplier at different times testing traffic at peak times vs no traffic
+    hour = 0;
+    cout<<"The traffic scaler at midnight is: " <<trafficCalc()<<endl;
+    hour = 7;
+    cout<<"The traffic scaler at 7 AM is: " <<trafficCalc()<<endl;
+    hour = 20;
+    cout<<"The traffic scaler at 8 PM is: " <<trafficCalc()<<endl;
+
+    //Test Case 5: Test same route as used in case 3 using traffic at 8 PM. The route should change.
+    Test.updateTraffic();
+    cout<<"Test Case 5 - We expect to see the route from City 1 to City 2 to City 5, with a time of 32:\n";
+    path = Test.dijk("City1", "City5");
+    if (path.size() != 1) {
+        for (size_t i = 0; i < path.size(); i++) {
+            cout << Test.cityNames[path[i]];
+            if (i < path.size() - 1) cout << " -> ";
+        }
+    }
+    cout<<endl;
+
 
 
 
     return 0;
-
 }
+
+

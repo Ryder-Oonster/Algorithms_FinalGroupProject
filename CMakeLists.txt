@@ -15,6 +15,9 @@ add_executable(Algorithms_FinalGroupProject
     scrapwork_AlgoFinalProj.cpp
     TestGraph.cpp
         test_curl_OSRM.cpp
+        TestCases.cpp
+        TestCases.cpp
+        TestCases.cpp
 )
 
 # Link libraries if needed (example using vcpkg-installed libraries)
